@@ -2,25 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SuratMasukController;
+use App\Http\Controllers\SuratKeluarController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Dashboard
+Route::get('/dashboard', function () {
+    return view('surat-masuk.dashboard');
+})->name('dashboard');
 
-//route dasar
-// Route::get('/Surat-Masuk', function () {
-//     return 'Halaman Surat Masuk';
-// })->name('surat-masuk.index');
+// Surat Masuk
+Route::get('/surat-masuk', [SuratMasukController::class, 'index'])->name('surat-masuk.index');
+Route::get('/surat-masuk/{id}', [SuratMasukController::class, 'show'])->name('surat-masuk.show');
 
-//route dengan parameter
-Route::get('/Surat-Masuk/{id}', function ($id) {
-    return 'Detail Surat Masuk dengan id:' .$id;
-})->name('surat-masuk.show');
-
-//route controller
-Route::get('/Surat-Masuk', [SuratMasukController::class,'index']) 
-->name('surat-masuk.show');
-
-Route::get('/Surat-Masuk/{$id}', [SuratMasukController::class,'show']) 
-->name('surat-masuk.show');
-
+// Surat Keluar
+Route::get('/surat-keluar', [SuratKeluarController::class, 'index'])->name('surat-keluar.index');
+Route::get('/surat-keluar/{id}', [SuratKeluarController::class, 'show'])->name('surat-keluar.show');

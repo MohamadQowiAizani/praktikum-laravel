@@ -1,37 +1,25 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Surat Masuk</title>
-</head>
-<body>
-    <h1>Halaman Surat Masuk</h1>
-
-    <table border="1" cellpadding="10">
-        <thead>
+@extends('layouts.app')
+@section('title', 'Daftar Surat Masuk')
+@section('content')
+<h1>Daftar Surat Masuk</h1>
+<table border="1" cellpadding="8">
+    <thead>
+        <tr><th>No</th><th>Nomor Surat</th><th>Tanggal</th>
+            <th>Pengirim</th><th>Perihal</th><th>Aksi</th></tr>
+    </thead>
+    <tbody>
+        @forelse ($suratMasuk as $surat)
             <tr>
-                <th>No</th>
-                <th>Nomor Surat</th>
-                <th>Tanggal</th>
-                <th>Pengirim</th>
-                <th>Perihal</th>
-                <th>aksi</th>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $surat->nomor_surat }}</td>
+                <td>{{ $surat->tanggal }}</td>
+                <td>{{ $surat->pengirim }}</td>
+                <td>{{ $surat->perihal }}</td>
+                <td><a href="{{ route('surat-masuk.show', $surat->id) }}">Detail</a></td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach($suratMasuk as $surat)
-            <tr>
-                <td>{{$loop->iteration}}</td>
-                <td>{{ $surat['nomor_surat']}}</td>
-                <td>{{ $surat['tanggal']}}</td>
-                <td>{{ $surat['pengirim']}}</td>
-                <td>{{ $surat['perihal']}}</td>
-                <td>
-                    <a href="{{route('surat-masuk.show', $surat['id'])}}">Detail</a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</body>
-</html>
+        @empty
+            <tr><td colspan="6">Belum ada surat masuk.</td></tr>
+        @endforelse
+    </tbody>
+</table>
+@endsection
