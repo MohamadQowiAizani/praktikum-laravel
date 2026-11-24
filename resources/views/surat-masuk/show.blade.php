@@ -8,6 +8,12 @@
 <p class="py-3 text-slate-700"><strong class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Pengirim:</strong> {{ $surat->pengirim }}</p>
 <p class="py-3 text-slate-700"><strong class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Perihal:</strong> {{ $surat->perihal }}</p>
 <p class="py-3 text-slate-700"><strong class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Keterangan:</strong> {{ $surat->keterangan ?? '-' }}</p>
+<p class="py-3 text-slate-700"><strong class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Kategori:</strong> {{ $surat->category?->nama ?? 'Tanpa kategori' }}</p>
+@if ($surat->lampiran)
+<p class="py-3 text-slate-700"><strong class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Lampiran:</strong>
+    <a href="{{ asset('storage/' . $surat->lampiran) }}" target="_blank" rel="noopener" class="font-semibold text-indigo-600 transition hover:text-indigo-500">Lihat lampiran</a>
+</p>
+@endif
 </div>
 <a href="{{ route('surat-masuk.index') }}"
    class="mt-5 inline-block text-sm font-semibold text-indigo-600 transition hover:text-indigo-500">Kembali ke daftar</a>
