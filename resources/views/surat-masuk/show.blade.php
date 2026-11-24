@@ -1,11 +1,14 @@
 @extends('layouts.app')
 @section('title', 'Detail Surat Masuk')
 @section('content')
-<h1>Detail Surat Masuk</h1>
-<p><strong>Nomor:</strong> {{ $surat->nomor_surat }}</p>
-<p><strong>Tanggal:</strong> {{ $surat->tanggal }}</p>
-<p><strong>Pengirim:</strong> {{ $surat->pengirim }}</p>
-<p><strong>Perihal:</strong> {{ $surat->perihal }}</p>
-<p><strong>Keterangan:</strong> {{ $surat->keterangan ?? '-' }}</p>
-<a href="{{ route('surat-masuk.index') }}">Kembali ke daftar</a>
+<h1 class="mb-6 text-2xl font-bold tracking-tight text-slate-900">Detail Surat Masuk</h1>
+<div class="max-w-2xl divide-y divide-slate-100 rounded-xl border border-slate-200 bg-white px-6 py-2 shadow-sm">
+<p class="py-3 text-slate-700"><strong class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Nomor:</strong> {{ $surat->nomor_surat }}</p>
+<p class="py-3 text-slate-700"><strong class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Tanggal:</strong> {{ $surat->tanggal }}</p>
+<p class="py-3 text-slate-700"><strong class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Pengirim:</strong> {{ $surat->pengirim }}</p>
+<p class="py-3 text-slate-700"><strong class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Perihal:</strong> {{ $surat->perihal }}</p>
+<p class="py-3 text-slate-700"><strong class="block text-xs font-semibold uppercase tracking-wide text-slate-500">Keterangan:</strong> {{ $surat->keterangan ?? '-' }}</p>
+</div>
+<a href="{{ route('surat-masuk.index') }}"
+   class="mt-5 inline-block text-sm font-semibold text-indigo-600 transition hover:text-indigo-500">Kembali ke daftar</a>
 @endsection
